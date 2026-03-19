@@ -99,9 +99,27 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "bundle_banner_6Y6UrK": {
+      "type": "bundle-banner",
+      "name": "Bundle Banner",
+      "settings": {
+        "heading_text": "Smart stack, smarter price - shop curated bundles and ",
+        "heading_text_mobile": "Smart stack, smarter price - shop curated bundles and ",
+        "heading_highlight": "save 30%",
+        "highlight_color": "#00bcdd",
+        "enable_gradient": false,
+        "gradient_color_1": "#ff6f61",
+        "gradient_color_2": "#ff9a9e",
+        "subheading_text": "Clinically informed formulas that support energy, balance, and everyday wellness.",
+        "subheading_text_mobile": "Clinically informed formulas that support energy, balance, and everyday wellness.",
+        "background_image": "shopify://shop_images/Background_2.png",
+        "background_image_mobile": "shopify://shop_images/Background_mobile.png"
+      }
     }
   },
   "order": [
+    "bundle_banner_6Y6UrK",
     "main",
     "related-products"
   ]
