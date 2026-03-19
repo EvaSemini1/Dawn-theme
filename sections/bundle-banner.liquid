@@ -1,0 +1,318 @@
+{% comment %}
+  Bundle Banner Section — Mobile-first with 390px optimization
+  Desktop layout remains exactly as before
+{% endcomment %}
+
+<section class="bundle-banner">
+
+  {% assign bg_desktop = section.settings.background_image | image_url: width: 2000 %}
+  {% assign bg_mobile = section.settings.background_image_mobile | image_url: width: 390 %}
+
+  <div 
+    class="bundle-banner__bg"
+    style="
+      --bg-desktop: url({{ bg_desktop }});
+      --bg-mobile: url({{ bg_mobile | default: bg_desktop }});
+    "
+    role="img"
+    aria-label="{{ section.settings.heading_text | escape }}">
+  </div>
+
+  <div class="bundle-banner__inner">
+
+    <!-- Text content wrapper -->
+    <div class="bundle-banner__content">
+
+      <!-- Desktop text (left-aligned) -->
+      <div class="bundle-banner__text-desktop">
+        {% if section.settings.heading_text != blank %}
+          <h2 class="bundle-banner__heading">
+            {{ section.settings.heading_text }}
+            {% if section.settings.heading_highlight != blank %}
+              <span 
+                class="bundle-banner__highlight {% if section.settings.enable_gradient %}is-gradient{% endif %}"
+                style="
+                  --highlight-color: {{ section.settings.highlight_color }};
+                  --gradient-1: {{ section.settings.gradient_color_1 }};
+                  --gradient-2: {{ section.settings.gradient_color_2 }};
+                ">
+                {{ section.settings.heading_highlight }}
+              </span>
+            {% endif %}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subheading_text != blank %}
+          <p class="bundle-banner__subheading">
+            {{ section.settings.subheading_text }}
+          </p>
+        {% endif %}
+      </div>
+
+      <!-- Mobile text (centered) -->
+      <div class="bundle-banner__text-mobile">
+        {% if section.settings.heading_text_mobile != blank %}
+           <h2 class="bundle-banner__heading-mobile">
+            {{ section.settings.heading_text }}
+            {% if section.settings.heading_highlight != blank %}
+              <span 
+                class="bundle-banner__highlight {% if section.settings.enable_gradient %}is-gradient{% endif %}"
+                style="
+                  --highlight-color: {{ section.settings.highlight_color }};
+                  --gradient-1: {{ section.settings.gradient_color_1 }};
+                  --gradient-2: {{ section.settings.gradient_color_2 }};
+                ">
+                {{ section.settings.heading_highlight }}
+              </span>
+            {% endif %}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subheading_text_mobile != blank %}
+          <p class="bundle-banner__subheading">
+            {{ section.settings.subheading_text_mobile }}
+          </p>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <!-- Product image -->
+    {% if section.settings.product_image %}
+      <div class="bundle-banner__media">
+        <img 
+          src="{{ section.settings.product_image | image_url: width: 800 }}"
+          alt="{{ section.settings.heading_text | escape }}"
+          loading="lazy"
+          width="800"
+          height="800">
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+/* ===== Base / Mobile-first ===== */
+.bundle-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  color: #fff;
+}
+
+/* Background */
+.bundle-banner__bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-mobile);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Overlay */
+.bundle-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Inner layout */
+.bundle-banner__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 16px;
+}
+
+/* Content width for mobile */
+.bundle-banner__content {
+  max-width: 340px;
+
+}
+
+/* Typography */
+.bundle-banner__heading-mobile {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  line-height: 29px;
+  margin: 0 0 16px;
+  color: #fff;
+  text-align: left;
+  font-size: 28px;
+  width: 90%;
+}
+
+.bundle-banner__subheading {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+/* Highlight */
+.bundle-banner__highlight {
+  color: var(--highlight-color);
+}
+
+.bundle-banner__highlight.is-gradient {
+  background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== Desktop layout (≥768px) ===== */
+@media (min-width: 768px) {
+  .bundle-banner__bg {
+    background-image: var(--bg-desktop);
+  }
+
+  .bundle-banner__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 48px 64px;
+    gap: 32px;
+    height: 482px;
+  }
+  .bundle-banner__heading{
+    font-weight: 700;
+    font-size: 37.7px;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 48px;
+    margin: 0 0 8px;
+    color: #ffffff;
+    text-align: left;
+}
+
+  .bundle-banner__content {
+    padding: 0;
+    max-width: 31%;
+  }
+
+  .bundle-banner__media img {
+    max-width: 420px;
+  }
+
+  /* Desktop text wrapper visible, mobile hidden */
+  .bundle-banner__text-desktop {
+    display: block;
+  }
+  .bundle-banner__text-mobile {
+    display: none;
+
+  }
+}
+
+/* ===== Mobile layout (<768px) ===== */
+@media (max-width: 767px) {
+
+  .bundle-banner__inner {
+    text-align: center;
+    gap: 16px;
+    height: 474px;
+    justify-content: flex-end;
+  }
+
+  .bundle-banner__media img {
+    max-width: 220px;
+  }
+
+  .bundle-banner__text-desktop {
+    display: none;
+  }
+  .bundle-banner__text-mobile {
+    display: block;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Bundle Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Desktop heading",
+      "default": "Spring Bundle Sale"
+    },
+    {
+      "type": "text",
+      "id": "heading_text_mobile",
+      "label": "Mobile heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Highlighted text",
+      "default": "30% OFF"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#ff6f61"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable gradient",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#ff6f61"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#ff9a9e"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "label": "Desktop subheading",
+      "default": "Save on our exclusive bundles."
+    },
+    {
+      "type": "text",
+      "id": "subheading_text_mobile",
+      "label": "Mobile subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Banner"
+    }
+  ]
+}
+{% endschema %}
