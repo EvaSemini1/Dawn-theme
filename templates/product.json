@@ -23,7 +23,9 @@
         "subheading_text": "Clinically informed formulas that support energy, balance, and everyday wellness.",
         "subheading_text_mobile": "Clinically informed formulas that support energy, balance, and everyday wellness.",
         "background_image": "shopify://shop_images/Background_2.png",
-        "background_image_mobile": "shopify://shop_images/Background_mobile.png"
+        "background_image_mobile": "shopify://shop_images/Background_mobile.png",
+        "cta_label": "",
+        "cta_link": "shopify://collections/all"
       }
     },
     "main": {
