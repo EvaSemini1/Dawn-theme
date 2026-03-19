@@ -28,8 +28,6 @@
                 class="bundle-banner__highlight {% if section.settings.enable_gradient %}is-gradient{% endif %}"
                 style="
                   --highlight-color: {{ section.settings.highlight_color }};
-                  --gradient-1: {{ section.settings.gradient_color_1 }};
-                  --gradient-2: {{ section.settings.gradient_color_2 }};
                 ">
                 {{ section.settings.heading_highlight }}
               </span>
@@ -126,24 +124,6 @@
       "id": "highlight_color",
       "label": "Highlight color",
       "default": "#ff6f61"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_gradient",
-      "label": "Enable gradient",
-      "default": false
-    },
-    {
-      "type": "color",
-      "id": "gradient_color_1",
-      "label": "Gradient color 1",
-      "default": "#ff6f61"
-    },
-    {
-      "type": "color",
-      "id": "gradient_color_2",
-      "label": "Gradient color 2",
-      "default": "#ff9a9e"
     },
     {
       "type": "text",
