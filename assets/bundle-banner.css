@@ -89,8 +89,8 @@
   transition: background 0.3s, color 0.3s;
   z-index: 3;
   position: relative;
-  background-color: #ffffff; /* default desktop background */
-  color: #000000;            /* default text color */
+  background-color: #ffffff; 
+  color: #000000;           
 }
 
 /* Hover effect */
